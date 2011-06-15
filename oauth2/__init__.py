@@ -608,7 +608,11 @@ class Request(dict):
         """Turn URL string into parameters."""
         parameters = parse_qs(param_str.encode('utf-8'), keep_blank_values=True)
         for k, v in parameters.iteritems():
-            parameters[k] = urllib.unquote(v[0])
+            if len(v) > 1:
+                parameters[k] = [urllib.unquote(value) for value in v]
+            else:
+                parameters[k] = urllib.unquote(v[0])
+
         return parameters
 
 
