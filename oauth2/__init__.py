@@ -609,9 +609,10 @@ class Request(dict):
         parameters = parse_qs(param_str.encode('utf-8'), keep_blank_values=True)
         for k, v in parameters.iteritems():
             if len(v) > 1:
-                parameters[k] = [urllib.unquote(value) for value in v]
+                #parameters[k] = [urllib.unquote(value) for value in v]
+				parameters[k] = [value for value in v]
             else:
-                parameters[k] = urllib.unquote(v[0])
+                parameters[k] = v[0] #urllib.unquote(v[0])
 
         return parameters
 
