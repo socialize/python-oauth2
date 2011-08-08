@@ -610,7 +610,7 @@ class Request(dict):
         for k, v in parameters.iteritems():
             if len(v) > 1:
                 #parameters[k] = [urllib.unquote(value) for value in v]
-				parameters[k] = [value for value in v]
+                parameters[k] = [value for value in v]
             else:
                 parameters[k] = v[0] #urllib.unquote(v[0])
 
